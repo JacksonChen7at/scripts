@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Gate</title>
+    <title>Private Site</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: #000;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            color: #fff;
         }
 
         .container {
-            background-color: rgba(0,0,0,0.5);
+            background: #111;
             padding: 40px;
             border-radius: 10px;
             text-align: center;
+            width: 80%;
+            max-width: 600px;
         }
 
         input {
@@ -28,59 +30,80 @@
             width: 80%;
             margin-bottom: 20px;
             border-radius: 5px;
-            border: none;
-            font-size: 16px;
+            border: 1px solid #fff;
+            background: #000;
+            color: #fff;
         }
 
         button {
             padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
+            border: 1px solid #fff;
+            background: #000;
+            color: #fff;
             cursor: pointer;
-            background-color: #ff6b6b;
-            color: white;
-            transition: 0.3s;
         }
 
         button:hover {
-            background-color: #ff4757;
+            background: #fff;
+            color: #000;
+        }
+
+        a {
+            display: block;
+            margin: 8px 0;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h2 {
+            margin-top: 25px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
         }
 
         #errorMsg {
-            color: #ff6b6b;
-            margin-top: 15px;
-            font-weight: bold;
+            color: #ccc;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="passwordContainer">
-        <h1>Enter Password</h1>
-        <input type="password" id="passwordInput" placeholder="Password" onkeydown="if(event.key==='Enter'){checkPassword()}">
-        <button onclick="checkPassword()">Enter</button>
-        <p id="errorMsg"></p>
-    </div>
 
-    <div class="container" id="mainContent" style="display:none;">
-        <h1>Welcome!</h1>
-        <p>This is your main content. You can put anything here.</p>
-    </div>
+<div class="container" id="passwordContainer">
+    <h1>Enter Password</h1>
+    <input type="password" id="passwordInput" placeholder="Password" onkeydown="if(event.key==='Enter'){checkPassword()}">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="errorMsg"></p>
+</div>
 
-    <script>
-        function checkPassword() {
-            const password = document.getElementById('passwordInput').value;
-            const correctPassword = "AssaultRifleBwai"; // <-- updated password
-            const errorMsg = document.getElementById('errorMsg');
+<div class="container" id="mainContent" style="display:none;">
+    <h1>Welcome Back! AssaultRifleBwai</h1>
+    <h2>Xeno Download</h2>
+    <a href="#">https://wrdcdn.net/r/214685/1772008617896/Xeno-v1.3.25b2.exe</a>
+    
+    <h2>Rivals</h2>
+    <a href="#">Soluna (add your link)</a>
+    <a href="#">LexusHub (add your link)</a>
+    <a href="#">Addons (add your link)</a>
 
-            if(password === correctPassword) {
-                // Hide password container and show main content
-                document.getElementById('passwordContainer').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-            } else {
-                errorMsg.textContent = "Incorrect password. Try again!";
-            }
+    <h2>Blox Fruits</h2>
+    <a href="#">Nubla (add your link)</a>
+    <a href="#">MonsterHub (add your link)</a>
+</div>
+
+<script>
+    function checkPassword() {
+        const password = document.getElementById('passwordInput').value;
+        const correctPassword = "AssaultRifleBwai";
+        const errorMsg = document.getElementById('errorMsg');
+
+        if(password === correctPassword) {
+            document.getElementById('passwordContainer').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        } else {
+            errorMsg.textContent = "Incorrect password.";
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
