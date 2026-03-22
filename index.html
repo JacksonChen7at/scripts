@@ -57,20 +57,20 @@
 <body>
     <div class="container" id="passwordContainer">
         <h1>Enter Password</h1>
-        <input type="password" id="passwordInput" placeholder="Password">
+        <input type="password" id="passwordInput" placeholder="Password" onkeydown="if(event.key==='Enter'){checkPassword()}">
         <button onclick="checkPassword()">Enter</button>
         <p id="errorMsg"></p>
     </div>
 
     <div class="container" id="mainContent" style="display:none;">
         <h1>Welcome!</h1>
-        <p>hola como estas</p>
+        <p>This is your main content. You can put anything here.</p>
     </div>
 
     <script>
         function checkPassword() {
             const password = document.getElementById('passwordInput').value;
-            const correctPassword = "mypassword"; // <-- change this to your password
+            const correctPassword = "AssaultRifleBwai"; // <-- updated password
             const errorMsg = document.getElementById('errorMsg');
 
             if(password === correctPassword) {
