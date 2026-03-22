@@ -1,108 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Site</title>
 
-        .container {
-            background: #111;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            width: 80%;
-            max-width: 600px;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        input {
-            padding: 10px;
-            width: 80%;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #fff;
-            background: #000;
-            color: #fff;
-        }
+.container {
+    background: #111;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
 
-        button {
-            padding: 10px 20px;
-            border: 1px solid #fff;
-            background: #000;
-            color: #fff;
-            cursor: pointer;
-        }
+input {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+}
 
-        button:hover {
-            background: #fff;
-            color: #000;
-        }
+button {
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
 
-        a {
-            display: block;
-            margin: 8px 0;
-            color: #fff;
-            text-decoration: underline;
-        }
+button:hover {
+    background: #fff;
+    color: #000;
+}
 
-        h2 {
-            margin-top: 25px;
-            border-bottom: 1px solid #fff;
-            padding-bottom: 5px;
-        }
+h2 {
+    margin-top: 25px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
 
-        #errorMsg {
-            color: #ccc;
-        }
-    </style>
+/* COPY BOX STYLE */
+.copy-box {
+    background: #000;
+    border: 1px solid #fff;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.copy-box:hover {
+    background: #fff;
+    color: #000;
+}
+
+#errorMsg {
+    color: #ccc;
+}
+</style>
 </head>
+
 <body>
 
+<!-- PASSWORD SCREEN -->
 <div class="container" id="passwordContainer">
     <h1>Enter Password</h1>
-    <input type="password" id="passwordInput" placeholder="Password" onkeydown="if(event.key==='Enter'){checkPassword()}">
+    <input type="password" id="passwordInput" placeholder="Password"
+        onkeydown="if(event.key==='Enter'){checkPassword()}">
     <button onclick="checkPassword()">Enter</button>
     <p id="errorMsg"></p>
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="container" id="mainContent" style="display:none;">
     <h1>Welcome Back! AssaultRifleBwai</h1>
-    <h2>Xeno Download</h2>
-    <a href="#">https://wrdcdn.net/r/214685/1772008617896/Xeno-v1.3.25b2.exe</a>
-    
+    <h2>Xeno</h2>
+    <div class="copy-box" ondblclick="copyText(this)" data-text="https://wrdcdn.net/r/214685/1772008617896/Xeno-v1.3.25b2.exe">
+        Xeno (double-click to copy)
+    </div>
     <h2>Rivals</h2>
-    <a href="#">Soluna (add your link)</a>
-    <a href="#">LexusHub (add your link)</a>
-    <a href="#">Addons (add your link)</a>
+
+    <div class="copy-box" ondblclick="copyText(this)" data-text="PUT YOUR SOLUNA SCRIPT HERE">
+        Soluna (double-click to copy)
+    </div>
+
+    <div class="copy-box" ondblclick="copyText(this)" data-text="PUT YOUR LEXUSHUB SCRIPT HERE">
+        LexusHub (double-click to copy)
+    </div>
+
+    <div class="copy-box" ondblclick="copyText(this)" data-text="PUT YOUR ADDONS SCRIPT HERE">
+        Addons (double-click to copy)
+    </div>
 
     <h2>Blox Fruits</h2>
-    <a href="#">Nubla (add your link)</a>
-    <a href="#">MonsterHub (add your link)</a>
+    <div class="copy-box" ondblclick="copyText(this)" data-text="PUT YOUR NUBLA SCRIPT HERE">
+        Nubla (double-click to copy)
+    </div>
+
+    <div class="copy-box" ondblclick="copyText(this)" data-text="PUT YOUR MONSTERHUB SCRIPT HERE">
+        MonsterHub (double-click to copy)
+    </div>
 </div>
 
 <script>
-    function checkPassword() {
-        const password = document.getElementById('passwordInput').value;
-        const correctPassword = "AssaultRifleBwai";
-        const errorMsg = document.getElementById('errorMsg');
+function checkPassword() {
+    const password = document.getElementById('passwordInput').value;
+    const correctPassword = "AssaultRifleBwai";
+    const errorMsg = document.getElementById('errorMsg');
 
-        if(password === correctPassword) {
-            document.getElementById('passwordContainer').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-        } else {
-            errorMsg.textContent = "Incorrect password.";
-        }
+    if(password === correctPassword) {
+        document.getElementById('passwordContainer').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    } else {
+        errorMsg.textContent = "Incorrect password.";
     }
+}
+
+// COPY FUNCTION
+function copyText(element) {
+    const text = element.getAttribute('data-text');
+
+    navigator.clipboard.writeText(text).then(() => {
+        const original = element.textContent;
+        element.textContent = "Copied! ✅";
+
+        setTimeout(() => {
+            element.textContent = original;
+        }, 1500);
+    });
+}
 </script>
 
 </body>
