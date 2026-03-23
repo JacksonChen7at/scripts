@@ -127,6 +127,9 @@ h2 {
     data-text="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/giahuy2511-coder/MonsterHub/refs/heads/main/MonsterHubEN&quot;))()">
         MonsterHub (double-click to copy)
     </div>
+<h2>Guide</h2>
+<div class="copy-box" ondblclick="goToTutorial()">
+    Tutorial (double-click to open)
 </div>
 
 <script>
@@ -143,7 +146,6 @@ function checkPassword() {
     }
 }
 
-// COPY FUNCTION
 function copyText(element) {
     const text = element.getAttribute('data-text');
 
@@ -155,6 +157,9 @@ function copyText(element) {
             element.textContent = original;
         }, 1500);
     });
+}
+function goToTutorial() {
+    window.location.href = "tutorial.html";
 }
 </script>
 
