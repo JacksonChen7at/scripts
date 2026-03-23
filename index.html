@@ -139,8 +139,8 @@ function checkPassword() {
     const errorMsg = document.getElementById('errorMsg');
 
     if(password === correctPassword) {
-        // SAVE that user is logged in
-        localStorage.setItem("loggedIn", "true");
+        // SAVE that user is logged in for this session only
+        sessionStorage.setItem("loggedIn", "true");
 
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
@@ -149,9 +149,9 @@ function checkPassword() {
     }
 }
 
-// FIXED HERE 👇
+// Auto-skip password if already entered **in this session**
 document.addEventListener("DOMContentLoaded", function() {
-    if(localStorage.getItem("loggedIn") === "true") {
+    if(sessionStorage.getItem("loggedIn") === "true") {
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
     }
