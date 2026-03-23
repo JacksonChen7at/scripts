@@ -149,13 +149,13 @@ function checkPassword() {
     }
 }
 
-// Auto-skip password if already entered
+// FIXED HERE 👇
 document.addEventListener("DOMContentLoaded", function() {
     if(localStorage.getItem("loggedIn") === "true") {
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
     }
-}
+});
 
 function copyText(element) {
     const text = element.getAttribute('data-text');
@@ -169,6 +169,7 @@ function copyText(element) {
         }, 1500);
     });
 }
+
 function goToTutorial() {
     window.location.href = "tutorial.html";
 }
