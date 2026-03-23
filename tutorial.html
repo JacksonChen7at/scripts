@@ -34,21 +34,27 @@ img {
     margin-top: 10px;
 }
 
-.back-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px;
-    border: 1px solid #fff;
+/* Updated back button style to match scripts */
+.copy-box {
     background: #000;
-    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px;
+    margin: 20px auto;
+    border-radius: 8px;
     cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+    width: 200px;
     text-align: center;
-    width: 150px;
 }
 
-.back-btn:hover {
+.copy-box:hover {
     background: #fff;
     color: #000;
+}
+
+.copy-box:active {
+    transform: scale(0.95);
 }
 </style>
 </head>
@@ -67,12 +73,13 @@ img {
 
     <div class="section">
         <p>
-          Now go to Settings in the bottom left corner, then turn on 'Auto Attach'
+          Now go to Settings in the bottom-left corner, then turn on 'Auto Attach'
         </p>
         <img src="page2.png" alt="Step 2 Image">
     </div>
 
-    <div class="back-btn" onclick="goBack()">⬅ Back</div>
+    <!-- Updated back button -->
+    <div class="copy-box" onclick="goBack()">⬅ Back</div>
 </div>
 
 <script>
