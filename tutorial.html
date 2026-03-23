@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.section {
+    margin: 30px 0;
+}
+
+img {
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.back-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+}
+
+.back-btn:hover {
+    background: #fff;
+    color: #000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Tutorial</h1>
+
+    <div class="section">
+        <p>
+          Once you’ve downloaded it, it should look like this
+        </p>
+        <img src="page1.png" alt="Step 1 Image">
+    </div>
+
+    <div class="section">
+        <p>
+          Now go to Settings in the bottom left corner, then turn on 'Auto Attach'
+        </p>
+        <img src="page2.png" alt="Step 2 Image">
+    </div>
+
+    <div class="back-btn" onclick="goBack()">⬅ Back</div>
+</div>
+
+<script>
+function goBack() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
