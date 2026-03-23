@@ -139,10 +139,21 @@ function checkPassword() {
     const errorMsg = document.getElementById('errorMsg');
 
     if(password === correctPassword) {
+        // SAVE that user is logged in
+        localStorage.setItem("loggedIn", "true");
+
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
     } else {
         errorMsg.textContent = "Incorrect password.";
+    }
+}
+
+// Auto-skip password if already entered
+window.onload = function() {
+    if(localStorage.getItem("loggedIn") === "true") {
+        document.getElementById('passwordContainer').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
     }
 }
 
