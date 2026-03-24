@@ -17,23 +17,29 @@ body {
     margin: 0;
 }
 
-/* ✅ CONTAINER */
+/* ✅ CONTAINER: start at 0 glow, animate on load, glow more on hover */
 .container {
     max-width: 700px;
-    margin: auto;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
 
-    /* ✅ START WITH NO GLOW */
+    /* start at 0 glow */
     box-shadow: 0 0 0px #fff;
 
-    /* ✅ ONLY GLOW ON HOVER (like before) */
-    transition: box-shadow 0.4s ease;
+    /* animate on load */
+    animation: glowIn 1.5s ease forwards;
+    transition: box-shadow 0.4s ease; /* hover effect */
 }
 
 .container:hover {
-    box-shadow: 0 0 30px #fff;
+    box-shadow: 0 0 40px #fff;
+}
+
+/* glow animation keyframes */
+@keyframes glowIn {
+    0% { box-shadow: 0 0 0px #fff; }
+    100% { box-shadow: 0 0 30px #fff; }
 }
 
 input {
@@ -52,7 +58,6 @@ button {
     background: #000;
     color: #fff;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 button:hover {
@@ -66,7 +71,6 @@ h2 {
     padding-bottom: 5px;
 }
 
-/* Copy box style with hover glow */
 .copy-box {
     background: #000;
     border: 1px solid #fff;
@@ -74,8 +78,7 @@ h2 {
     margin: 10px 0;
     border-radius: 6px;
     cursor: pointer;
-    user-select: none;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .copy-box:hover {
@@ -110,78 +113,52 @@ h2 {
     <h1>Welcome Back!</h1>
 
     <h2>Xeno</h2>
-    <div class="copy-box" ondblclick="copyText(this)" 
-    data-text="https://wrdcdn.net/r/214685/1772008617896/Xeno-v1.3.25b2.exe">
-        Xeno Download Link (double-click to copy)
-    </div>
-
-    <h2>Rivals</h2>
-    <div class="copy-box" ondblclick="copyText(this)" 
-    data-text="https://github.com/EndOverdosing/Soluna-API/blob/main/rivals-modern.lua">
-        Soluna (double-click to copy)
-    </div>
-
-    <div class="copy-box" ondblclick="copyText(this)" 
-    data-text="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua&quot;))()">
-        LexusHub (double-click to copy)
-    </div>
-
-    <div class="copy-box" ondblclick="copyText(this)" 
-    data-text="loadstring(game:HttpGet(&quot;https://rawscripts.net/raw/Universal-Script-addon-for-kiciahook-dules-rivals-126928&quot;))()">
-        Addons (double-click to copy)
-    </div>
-
-    <h2>Blox Fruits</h2>
-    <div class="copy-box" ondblclick="copyText(this)" 
-    data-text="loadstring(game:HttpGet(&quot;https://rawscripts.net/raw/Universal-Script-Nubla-X-138734&quot;))()">
-        Nubla (double-click to copy)
-    </div>
-
-    <div class="copy-box" ondblclick="copyText(this)" 
-    data-text="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/giahuy2511-coder/MonsterHub/refs/heads/main/MonsterHubEN&quot;))()">
-        MonsterHub (double-click to copy)
+    <div class="copy-box" ondblclick="copyText(this)" data-text="https://wrdcdn.net/r/214685/1772008617896/Xeno-v1.3.25b2.exe">
+        Xeno Download Link
     </div>
 
     <h2>Guide</h2>
     <div class="copy-box" ondblclick="goToTutorial()">
-        Tutorial (double-click to open)
+        Tutorial
     </div>
 </div>
 
 <script>
 function checkPassword() {
     const password = document.getElementById('passwordInput').value;
-    const correctPassword = "AssaultRifleBwai";
-    const errorMsg = document.getElementById('errorMsg');
-
-    if(password === correctPassword) {
+    if(password === "AssaultRifleBwai") {
         sessionStorage.setItem("loggedIn", "true");
+
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
+
+        // retrigger glow animation on mainContent
+        const content = document.getElementById('mainContent');
+        content.style.animation = "none";
+        setTimeout(() => {
+            content.style.animation = "glowIn 1.5s ease forwards";
+        }, 10);
     } else {
-        errorMsg.textContent = "Incorrect password.";
+        document.getElementById('errorMsg').textContent = "Incorrect password.";
     }
 }
 
-// Auto-skip password if already entered in this tab
+// auto login if session
 document.addEventListener("DOMContentLoaded", function() {
     if(sessionStorage.getItem("loggedIn") === "true") {
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
+        // retrigger glow on load
+        const content = document.getElementById('mainContent');
+        content.style.animation = "none";
+        setTimeout(() => {
+            content.style.animation = "glowIn 1.5s ease forwards";
+        }, 10);
     }
 });
 
 function copyText(element) {
-    const text = element.getAttribute('data-text');
-
-    navigator.clipboard.writeText(text).then(() => {
-        const original = element.textContent;
-        element.textContent = "Copied! ✅";
-
-        setTimeout(() => {
-            element.textContent = original;
-        }, 1500);
-    });
+    navigator.clipboard.writeText(element.dataset.text);
 }
 
 function goToTutorial() {
