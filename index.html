@@ -20,26 +20,24 @@ body {
 /* ✅ CONTAINER: start at 0 glow, animate on load, glow more on hover */
 .container {
     max-width: 700px;
+    margin: auto;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
 
-    /* start at 0 glow */
+    /* ✅ START WITH NO GLOW */
     box-shadow: 0 0 0px #fff;
 
-    /* animate on load */
-    animation: glowIn 1.5s ease forwards;
-    transition: box-shadow 0.4s ease; /* hover effect */
+    /* ✅ ONLY GLOW ON HOVER (like before) */
+    transition: box-shadow 0.4s ease;
+}
+
+.container {
+    box-shadow: 0 0 0px #fff;
 }
 
 .container:hover {
-    box-shadow: 0 0 40px #fff;
-}
-
-/* glow animation keyframes */
-@keyframes glowIn {
-    0% { box-shadow: 0 0 0px #fff; }
-    100% { box-shadow: 0 0 30px #fff; }
+    box-shadow: 0 0 30px #fff;
 }
 
 input {
