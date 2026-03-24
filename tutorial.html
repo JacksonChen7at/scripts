@@ -17,8 +17,9 @@ body {
 /* FIXED BACK BUTTON */
 .back-btn {
     position: fixed;
-    top: 40px; /* distance from top of screen */
-    left: calc(50% - 400px); /* container width / 2 + some extra space */
+    top: 40px; /* distance from top of viewport */
+    /* container is centered, max-width 700px → left edge = 50% - 350px */
+    left: calc(50% - 350px - 20px); /* 20px space outside container */
     padding: 10px 15px;
     border: 1px solid #fff;
     background: #000;
