@@ -6,6 +6,23 @@
 <title>Tutorial</title>
 
 <style>
+.back-btn {
+    display: inline-block;   
+    margin-bottom: 20px;    
+    padding: 10px 15px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: #fff;
+    color: #000;
+}
 body {
     font-family: Arial, sans-serif;
     background: #000;
@@ -64,6 +81,7 @@ img {
 
 
 <div class="container">
+    <div class="back-btn" onclick="goBack()">⬅ Back</div>
     <h1>Tutorial</h1>
 
     <div class="section">
