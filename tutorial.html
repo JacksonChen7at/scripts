@@ -14,20 +14,42 @@ body {
     padding: 20px;
 }
 
-/* Container */
-.container {
-    background: #000; /* same as body */
-    padding: 40px;
-    border-radius: 10px;
-    max-width: 700px;
-    margin: 0 auto;
+/* FIXED BACK BUTTON OUTSIDE CONTAINER */
+.back-btn {
+    position: fixed; /* stays fixed on screen */
+    top: 50px;
+    left: calc(50% - 350px - 130px); /* just outside container */
+    padding: 10px 15px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
     text-align: center;
-    box-shadow: 0 0 15px #fff; /* glow */
-    transition: 0.4s;
+    transition: 0.2s;
+    z-index: 9999;
 }
 
-.container:hover {
-    box-shadow: 0 0 25px #fff;
+.back-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    /* GLOW ANIMATION: from no shadow to glowing */
+    box-shadow: 0 0 0px 0px #fff;
+    animation: glowIn 2s forwards;
+}
+
+/* Glow animation from 0 to full */
+@keyframes glowIn {
+    0% { box-shadow: 0 0 0px 0px #fff; }
+    100% { box-shadow: 0 0 30px 10px #fff; }
 }
 
 h1 {
@@ -45,7 +67,7 @@ img {
     margin-top: 10px;
 }
 
-/* COPY BOX */
+/* Copy box style */
 .copy-box {
     background: #000;
     border: 1px solid #fff;
@@ -54,7 +76,7 @@ img {
     border-radius: 8px;
     cursor: pointer;
     user-select: none;
-    transition: 0.4s;
+    transition: 0.2s;
     width: 200px;
     text-align: center;
 }
@@ -62,40 +84,17 @@ img {
 .copy-box:hover {
     background: #fff;
     color: #000;
-    box-shadow: 0 0 20px #fff;
 }
 
 .copy-box:active {
     transform: scale(0.95);
-}
-
-/* FIXED BACK BUTTON OUTSIDE CONTAINER */
-.back-btn {
-    position: fixed;
-    top: 50px; /* slightly below top of page */
-    left: 50%; 
-    transform: translateX(-360px); /* adjust distance from container */
-    padding: 10px 15px;
-    border: 1px solid #fff;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 6px;
-    text-align: center;
-    transition: 0.2s;
-    z-index: 9999;
-}
-
-.back-btn:hover {
-    background: #fff;
-    color: #000;
 }
 </style>
 </head>
 
 <body>
 
-<!-- FIXED BACK BUTTON -->
+<!-- BACK BUTTON OUTSIDE -->
 <div class="back-btn" onclick="goBack()">⬅ Back</div>
 
 <div class="container">
