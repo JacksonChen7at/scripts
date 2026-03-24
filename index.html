@@ -6,6 +6,39 @@
 <title>Private Site</title>
 
 <style>
+/* FIXED BACK BUTTON WITH GLOW ANIMATION */
+.back-btn {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    padding: 10px 15px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 0 0px #fff; /* start from no glow */
+    animation: glowIn 2s forwards; /* animate to full glow */
+    transition: 0.2s;
+}
+
+/* Glow on hover adds extra pop */
+.back-btn:hover {
+    box-shadow: 0 0 15px #fff, 0 0 30px #fff;
+}
+
+/* Click effect */
+.back-btn:active {
+    transform: scale(0.95);
+}
+
+/* Glow animation keyframes from 0 → max */
+@keyframes glowIn {
+    0% { box-shadow: 0 0 0px #fff; }
+    100% { box-shadow: 0 0 15px #fff, 0 0 30px #fff; }
+}
 body {
     font-family: Arial, sans-serif;
     background: #000; /* same as container now */
