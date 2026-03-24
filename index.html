@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" href="https://jacksonchen7at.github.io/scripts/xeno.jpg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Private Site</title>
@@ -14,15 +13,24 @@ body {
 
     display: flex;
     justify-content: center;
+    align-items: center; /* ✅ THIS centers vertically again */
 
-    align-items: flex-start;   /* 🔥 KEY FIX */
     min-height: 100vh;
-
     margin: 0;
-    padding-top: 80px;         /* 🔥 gives space like before */
 }
 
-
+/* ✅ CONTAINER: start at 0 glow, animate on load, glow more on hover */
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center 
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* space from top like original */
+}
 
 .container {
     max-width: 700px;
@@ -31,6 +39,7 @@ body {
     text-align: center;
     border-radius: 10px;
 
+    box-shadow: 0 0 0px #fff;
     transition: box-shadow 0.4s ease;
 }
 
@@ -148,7 +157,6 @@ data-text="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/giahu
 <h2>Guide</h2>
 <div class="copy-box" ondblclick="goToTutorial()">
     Tutorial (double-click to open)
-</div>
 </div>
 
 <script>
