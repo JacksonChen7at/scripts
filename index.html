@@ -6,42 +6,9 @@
 <title>Private Site</title>
 
 <style>
-/* FIXED BACK BUTTON WITH GLOW ANIMATION */
-.back-btn {
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    padding: 10px 15px;
-    border: 1px solid #fff;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 6px;
-    text-align: center;
-    z-index: 9999;
-    box-shadow: 0 0 0px #fff; /* start from no glow */
-    animation: glowIn 2s forwards; /* animate to full glow */
-    transition: 0.2s;
-}
-
-/* Glow on hover adds extra pop */
-.back-btn:hover {
-    box-shadow: 0 0 15px #fff, 0 0 30px #fff;
-}
-
-/* Click effect */
-.back-btn:active {
-    transform: scale(0.95);
-}
-
-/* Glow animation keyframes from 0 → max */
-@keyframes glowIn {
-    0% { box-shadow: 0 0 0px #fff; }
-    100% { box-shadow: 0 0 15px #fff, 0 0 30px #fff; }
-}
 body {
     font-family: Arial, sans-serif;
-    background: #000; /* same as container now */
+    background: #000;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -50,7 +17,7 @@ body {
     margin: 0;
 }
 
-/* Container */
+/* Container with glow animation (0 → full on load) */
 .container {
     background: #000; /* same as body */
     padding: 40px;
@@ -58,13 +25,18 @@ body {
     text-align: center;
     width: 80%;
     max-width: 600px;
-    box-shadow: 0 0 15px #fff; /* optional glow */
-    transition: 0.4s;
+
+    /* start no glow */
+    box-shadow: 0 0 0px #fff;
+
+    /* animate to full glow */
+    animation: containerGlow 2s forwards;
 }
 
-/* Glow effect */
-.container:hover {
-    box-shadow: 0 0 25px #fff;
+/* Glow animation keyframes */
+@keyframes containerGlow {
+    0% { box-shadow: 0 0 0px #fff; }
+    100% { box-shadow: 0 0 25px #fff; }
 }
 
 input {
@@ -97,7 +69,7 @@ h2 {
     padding-bottom: 5px;
 }
 
-/* Copy box style with glow on hover */
+/* Copy box style with hover glow */
 .copy-box {
     background: #000;
     border: 1px solid #fff;
@@ -187,7 +159,6 @@ function checkPassword() {
 
     if(password === correctPassword) {
         sessionStorage.setItem("loggedIn", "true");
-
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
     } else {
