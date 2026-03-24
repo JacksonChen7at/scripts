@@ -23,14 +23,13 @@ body {
     margin: 0;
 }
 
-/* Background animation */
 @keyframes bgMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Side images */
+/* SIDE IMAGES */
 .side-image {
     position: fixed;
     top: 50%;
@@ -41,18 +40,16 @@ body {
     z-index: 0;
     animation: float 6s ease-in-out infinite alternate;
 }
-
 .side-image.left { left: 10px; }
 .side-image.right { right: 10px; }
-
 @keyframes float {
     0% { transform: translateY(-50%) translateX(0); }
     100% { transform: translateY(-50%) translateX(15px); }
 }
 
-/* Container */
+/* CONTAINER */
 .container {
-    background: #111;
+    background: #000; /* same as background now */
     padding: 40px;
     border-radius: 12px;
     text-align: center;
@@ -60,9 +57,12 @@ body {
     max-width: 600px;
     z-index: 1;
     animation: fadeIn 0.6s ease;
+    transition: box-shadow 0.3s ease; /* for glow */
+}
+.container:hover {
+    box-shadow: 0 0 20px #fff, 0 0 40px #fff;
 }
 
-/* Fade in */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
@@ -86,18 +86,9 @@ button {
     cursor: pointer;
     transition: 0.2s;
 }
+button:hover { background: #fff; color: #000; box-shadow: 0 0 10px #fff; }
 
-button:hover {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 0 10px #fff;
-}
-
-h2 {
-    margin-top: 25px;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 5px;
-}
+h2 { margin-top: 25px; border-bottom: 1px solid #fff; padding-bottom: 5px; }
 
 /* COPY BOX */
 .copy-box {
@@ -110,41 +101,40 @@ h2 {
     user-select: none;
     transition: 0.2s;
 }
+.copy-box:hover { background: #fff; color: #000; box-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+.copy-box:active { transform: scale(0.95); }
+.copy-box.copied { animation: pop 0.3s ease; }
+@keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
-.copy-box:hover {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff;
-}
+#errorMsg { color: #ccc; }
 
-.copy-box:active {
-    transform: scale(0.95);
+/* FIXED BACK BUTTON */
+.back-btn {
+    position: fixed;
+    top: 40px;
+    left: calc(50% - 350px - 80px); /* closer to container */
+    padding: 10px 15px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    transition: 0.2s;
+    z-index: 9999;
 }
+.back-btn:hover { background: #fff; color: #000; }
 
-/* Copy animation */
-.copy-box.copied {
-    animation: pop 0.3s ease;
-}
-
-@keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-#errorMsg {
-    color: #ccc;
-}
 </style>
 </head>
-
 <body>
 
-<!-- SIDE IMAGES (UNCOMMENT IF YOU WANT) -->
-<!--
-<img src="page1.png" class="side-image left">
-<img src="page1.png" class="side-image right">
--->
+<!-- SIDE IMAGES -->
+<!-- <img src="page1.png" class="side-image left">
+<img src="page1.png" class="side-image right"> -->
+
+<!-- BACK BUTTON -->
+<div class="back-btn" onclick="goBack()">⬅ Back</div>
 
 <!-- PASSWORD -->
 <div class="container" id="passwordContainer">
@@ -206,7 +196,6 @@ function checkPassword() {
 
     if(password === correctPassword) {
         sessionStorage.setItem("loggedIn", "true");
-
         document.getElementById('passwordContainer').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
     } else {
@@ -223,13 +212,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function copyText(element) {
     const text = element.getAttribute('data-text');
-
     navigator.clipboard.writeText(text).then(() => {
         const original = element.textContent;
-
         element.classList.add("copied");
         element.textContent = "Copied! ✅";
-
         setTimeout(() => {
             element.textContent = original;
             element.classList.remove("copied");
@@ -239,6 +225,10 @@ function copyText(element) {
 
 function goToTutorial() {
     window.location.href = "tutorial.html";
+}
+
+function goBack() {
+    window.location.href = "index.html";
 }
 </script>
 
