@@ -24,15 +24,9 @@ body {
 
 /* Back button OUTSIDE container */
 .back-btn {
-    position: absolute;
-    top: 40px; /* distance from top of page */
-    
-    /* This is the important part */
+    position: fixed;
+    top: 50px;            
     left: calc(50% - 350px - 120px);
-    /* 50% = center of screen
-       -350px = half container width (700px)
-       -120px = move outside */
-
     padding: 10px 15px;
     border: 1px solid #fff;
     background: #000;
@@ -41,6 +35,7 @@ body {
     border-radius: 6px;
     text-align: center;
     transition: 0.2s;
+    z-index: 1000;     
 }
 
 .back-btn:hover {
