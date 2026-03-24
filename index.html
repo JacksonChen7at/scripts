@@ -22,24 +22,21 @@ body {
     font-family: Arial, sans-serif;
     background: #000;
     color: #fff;
-
-    /* center the page vertically & horizontally */
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* top-align like original main page */
+    min-height: 100vh;
     margin: 0;
+    padding: 20px; /* space from top like original */
 }
 
 .container {
-    max-width: 600px; /* bigger width */
-    width: 80%;       /* fill most of screen */
-    padding: 40px;    /* bigger padding for size */
+    max-width: 700px;   /* bigger width like before */
+    width: 100%;        /* fill horizontally */
+    padding: 60px 40px; /* more padding like original */
     border-radius: 10px;
     text-align: center;
-
-    /* keep your glow / hover untouched */
-    box-shadow: 0 0 0px #fff;
+    box-shadow: 0 0 0px #fff; /* glow start at 0 */
     transition: box-shadow 0.4s ease;
 }
 
