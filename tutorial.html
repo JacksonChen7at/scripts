@@ -14,28 +14,20 @@ body {
     padding: 20px;
 }
 
-/* FIXED BACK BUTTON */
-.back-btn {
-    position: fixed;
-    top: 40px; 
-    left: calc(50% - 250px - 20px); 
-    padding: 10px 15px;
-    border: 1px solid #fff;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: 0.2s;
-    z-index: 9999;
+/* Container */
+.container {
+    background: #000; /* same as body */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 0 15px #fff; /* glow */
+    transition: 0.4s;
 }
 
-.back-btn:hover {
-    background: #fff;
-    color: #000;
-}
-.container {
-    max-width: 700px;
-    margin: auto;
+.container:hover {
+    box-shadow: 0 0 25px #fff;
 }
 
 h1 {
@@ -53,7 +45,7 @@ img {
     margin-top: 10px;
 }
 
-/* Copy box style */
+/* COPY BOX */
 .copy-box {
     background: #000;
     border: 1px solid #fff;
@@ -62,7 +54,7 @@ img {
     border-radius: 8px;
     cursor: pointer;
     user-select: none;
-    transition: 0.2s;
+    transition: 0.4s;
     width: 200px;
     text-align: center;
 }
@@ -70,17 +62,40 @@ img {
 .copy-box:hover {
     background: #fff;
     color: #000;
+    box-shadow: 0 0 20px #fff;
 }
 
 .copy-box:active {
     transform: scale(0.95);
+}
+
+/* FIXED BACK BUTTON OUTSIDE CONTAINER */
+.back-btn {
+    position: fixed;
+    top: 50px; /* slightly below top of page */
+    left: 50%; 
+    transform: translateX(-360px); /* adjust distance from container */
+    padding: 10px 15px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    transition: 0.2s;
+    z-index: 9999;
+}
+
+.back-btn:hover {
+    background: #fff;
+    color: #000;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACK BUTTON (OUTSIDE EVERYTHING) -->
+<!-- FIXED BACK BUTTON -->
 <div class="back-btn" onclick="goBack()">⬅ Back</div>
 
 <div class="container">
@@ -147,8 +162,6 @@ img {
             After this, you’re all set! Go back to the Executor and click Execute to run your scripts. Enjoy exploiting!
         </p>
     </div>
-
-    <div class="copy-box" onclick="goBack()">⬅ Back</div>
 </div>
 
 <script>
