@@ -16,25 +16,23 @@ body {
 
 /* FIXED BACK BUTTON */
 .back-btn {
-    position: fixed; /* THIS is what keeps it from moving */
-    top: 40px;
-    left: calc(50% - 350px - 120px); /* outside container */
+    position: fixed;
+    top: 20px;
+    left: 20px; /* simple fixed position on screen */
     padding: 10px 15px;
     border: 1px solid #fff;
     background: #000;
     color: #fff;
     cursor: pointer;
     border-radius: 6px;
-    text-align: center;
     transition: 0.2s;
-    z-index: 9999; /* always on top */
+    z-index: 9999;
 }
 
 .back-btn:hover {
     background: #fff;
     color: #000;
 }
-
 .container {
     max-width: 700px;
     margin: auto;
