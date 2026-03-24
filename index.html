@@ -18,17 +18,28 @@ body {
 }
 
 /* ✅ CONTAINER: start at 0 glow, animate on load, glow more on hover */
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+
+    /* center the page vertically & horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 .container {
-    max-width: 700px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+    max-width: 600px; /* bigger width */
+    width: 80%;       /* fill most of screen */
+    padding: 40px;    /* bigger padding for size */
     border-radius: 10px;
+    text-align: center;
 
-    /* ✅ START WITH NO GLOW */
+    /* keep your glow / hover untouched */
     box-shadow: 0 0 0px #fff;
-
-    /* ✅ ONLY GLOW ON HOVER (like before) */
     transition: box-shadow 0.4s ease;
 }
 
