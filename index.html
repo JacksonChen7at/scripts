@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Private Site</title>
 
-<!-- Prevent caching -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -13,7 +12,9 @@
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #000;
+    background: linear-gradient(-45deg, #000, #111, #000);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -22,32 +23,49 @@ body {
     margin: 0;
 }
 
+/* Background animation */
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* Side images */
 .side-image {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    width: 375px;
+    width: 300px;
+    opacity: 0.2;
     pointer-events: none;
     z-index: 0;
+    animation: float 6s ease-in-out infinite alternate;
 }
 
-.side-image.left {
-    left: 10px;
+.side-image.left { left: 10px; }
+.side-image.right { right: 10px; }
+
+@keyframes float {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(15px); }
 }
 
-.side-image.right {
-    right: 10px;
-}
-
+/* Container */
 .container {
     background: #111;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
     width: 80%;
     max-width: 600px;
-    z-index: 1; /* stays above images */
+    z-index: 1;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Fade in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 input {
@@ -66,11 +84,13 @@ button {
     background: #000;
     color: #fff;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
     background: #fff;
     color: #000;
+    box-shadow: 0 0 10px #fff;
 }
 
 h2 {
@@ -79,13 +99,13 @@ h2 {
     padding-bottom: 5px;
 }
 
-/* COPY BOX STYLE */
+/* COPY BOX */
 .copy-box {
     background: #000;
     border: 1px solid #fff;
     padding: 12px;
     margin: 10px 0;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     user-select: none;
     transition: 0.2s;
@@ -94,10 +114,22 @@ h2 {
 .copy-box:hover {
     background: #fff;
     color: #000;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff;
 }
 
 .copy-box:active {
     transform: scale(0.95);
+}
+
+/* Copy animation */
+.copy-box.copied {
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 #errorMsg {
@@ -108,13 +140,13 @@ h2 {
 
 <body>
 
-<!-- SIDE IMAGES -->
+<!-- SIDE IMAGES (UNCOMMENT IF YOU WANT) -->
 <!--
 <img src="page1.png" class="side-image left">
 <img src="page1.png" class="side-image right">
 -->
 
-<!-- PASSWORD SCREEN -->
+<!-- PASSWORD -->
 <div class="container" id="passwordContainer">
     <h1>Enter Password</h1>
     <input type="password" id="passwordInput" placeholder="Password"
@@ -123,7 +155,7 @@ h2 {
     <p id="errorMsg"></p>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="container" id="mainContent" style="display:none;">
     <h1>Welcome Back!</h1>
 
@@ -194,11 +226,14 @@ function copyText(element) {
 
     navigator.clipboard.writeText(text).then(() => {
         const original = element.textContent;
+
+        element.classList.add("copied");
         element.textContent = "Copied! ✅";
 
         setTimeout(() => {
             element.textContent = original;
-        }, 1500);
+            element.classList.remove("copied");
+        }, 1200);
     });
 }
 
