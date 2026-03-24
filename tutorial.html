@@ -14,18 +14,17 @@ body {
     padding: 20px;
 }
 
-/* FIXED BACK BUTTON OUTSIDE CONTAINER */
+/* ✅ BACK BUTTON (simple + stable + fixed) */
 .back-btn {
-    position: fixed; /* stays fixed on screen */
-    top: 50px;
-    left: calc(50% - 350px - 130px); /* just outside container */
+    position: fixed;
+    top: 30px;
+    left: 30px; /* SIMPLE — no calc glitch */
     padding: 10px 15px;
     border: 1px solid #fff;
     background: #000;
     color: #fff;
     cursor: pointer;
     border-radius: 6px;
-    text-align: center;
     transition: 0.2s;
     z-index: 9999;
 }
@@ -35,20 +34,23 @@ body {
     color: #000;
 }
 
+/* ✅ CONTAINER */
 .container {
     max-width: 700px;
     margin: auto;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 0 0px 0px #fff;
-    animation: glowIn 2s forwards;
+
+    /* ✅ START WITH NO GLOW */
+    box-shadow: 0 0 0px #fff;
+
+    /* ✅ ONLY GLOW ON HOVER (like before) */
+    transition: box-shadow 0.4s ease;
 }
 
-/* Glow animation from 0 to full */
-@keyframes glowIn {
-    0% { box-shadow: 0 0 0px 0px #fff; }
-    100% { box-shadow: 0 0 30px 10px #fff; }
+.container:hover {
+    box-shadow: 0 0 30px #fff;
 }
 
 h1 {
@@ -66,7 +68,7 @@ img {
     margin-top: 10px;
 }
 
-/* Copy box style */
+/* COPY BOX */
 .copy-box {
     background: #000;
     border: 1px solid #fff;
@@ -84,16 +86,12 @@ img {
     background: #fff;
     color: #000;
 }
-
-.copy-box:active {
-    transform: scale(0.95);
-}
 </style>
 </head>
 
 <body>
 
-<!-- BACK BUTTON OUTSIDE -->
+<!-- ✅ BACK BUTTON (OUTSIDE EVERYTHING) -->
 <div class="back-btn" onclick="goBack()">⬅ Back</div>
 
 <div class="container">
@@ -103,61 +101,51 @@ img {
         <p>
             Double-click the Xeno download link on our website main page, paste it into a new browser tab, then download and open it
         </p>
-        <img src="main.png" alt="Step 1 Image">
+        <img src="main.png">
+    </div>
+
+    <div class="section">
+        <p>Once you’ve downloaded it, it should look like this</p>
+        <img src="page1.png">
+    </div>
+
+    <div class="section">
+        <p>Now go to Settings in the bottom-left corner, then turn on 'Auto Attach'</p>
+        <img src="page2.png">
+    </div>
+
+    <div class="section">
+        <p>After enabling Auto Attach, go to Executor</p>
+        <img src="page3.png">
+    </div>
+
+    <div class="section">
+        <p>Paste a script from this website or anywhere else</p>
+        <img src="page4.png">
+    </div>
+
+    <div class="section">
+        <p>You can also right-click the Scripts tab to rename it</p>
+        <img src="page5.png">
     </div>
 
     <div class="section">
         <p>
-            Once you’ve downloaded it, it should look like this
+            Go to Client Manager. If you don’t see your username, Roblox isn’t open. Restart Xeno if needed.
         </p>
-        <img src="page1.png" alt="Step 2 Image">
+        <img src="page6.png">
     </div>
 
     <div class="section">
         <p>
-            Now go to Settings in the bottom-left corner, then turn on 'Auto Attach'
+            If it says 0 of 1 selected, click your username until it says 1 of 1 selected
         </p>
-        <img src="page2.png" alt="Step 3 Image">
+        <img src="page7.png">
     </div>
 
     <div class="section">
         <p>
-            After enabling Auto Attach, go to Executor
-        </p>
-        <img src="page3.png" alt="Step 4 Image">
-    </div>
-
-    <div class="section">
-        <p>
-            Paste a script from this website or from anywhere else like Scriptblox
-        </p>
-        <img src="page4.png" alt="Step 5 Image">
-    </div>
-
-    <div class="section">
-        <p>
-            You can also right-click the Scripts tab to rename it
-        </p>
-        <img src="page5.png" alt="Step 6 Image">
-    </div>
-
-    <div class="section">
-        <p>
-            After completing those steps, go to Client Manager, where you will see your Roblox username and the game you are currently playing. If you do not see your username, that means Roblox is not running. If it still doesn’t appear, try restarting Xeno
-        </p>
-        <img src="page6.png" alt="Step 7 Image">
-    </div>
-
-    <div class="section">
-        <p>
-            Look at the top-right of your Client Manager page. If it says 0 of 1 selected, click on your username/bar and it should then display 1 of 1 selected
-        </p>
-        <img src="page7.png" alt="Step 8 Image">
-    </div>
-
-    <div class="section">
-        <p>
-            After this, you’re all set! Go back to the Executor and click Execute to run your scripts. Enjoy exploiting!
+            After this, you're all set! Go back to Executor and click Execute.
         </p>
     </div>
 </div>
