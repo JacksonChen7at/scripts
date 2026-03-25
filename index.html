@@ -188,6 +188,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function copyText(element) {
     navigator.clipboard.writeText(element.dataset.text);
+
+    const originalText = element.innerText;
+
+    element.innerText = "Copied!";
+    element.style.background = "#fff";
+    element.style.color = "#000";
+
+    setTimeout(() => {
+        element.innerText = originalText;
+        element.style.background = "";
+        element.style.color = "";
+    }, 2000);
 }
 
 function goToTutorial() {
