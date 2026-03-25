@@ -187,19 +187,19 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function copyText(element) {
-    navigator.clipboard.writeText(element.dataset.text);
+    navigator.clipboard.writeText(element.dataset.text).then(() => {
+        const originalHTML = element.innerHTML;
 
-    const originalText = element.innerText;
+        element.innerHTML = "Copied!";
+        element.style.background = "#fff";
+        element.style.color = "#000";
 
-    element.innerText = "Copied!";
-    element.style.background = "#fff";
-    element.style.color = "#000";
-
-    setTimeout(() => {
-        element.innerText = originalText;
-        element.style.background = "";
-        element.style.color = "";
-    }, 2000);
+        setTimeout(() => {
+            element.innerHTML = originalHTML;
+            element.style.background = "";
+            element.style.color = "";
+        }, 2000);
+    });
 }
 
 function goToTutorial() {
